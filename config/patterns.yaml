@@ -1,0 +1,66 @@
+# Patterns for identifying cleanup candidates
+
+# Temporary files
+temp_files:
+  - "*.tmp"
+  - "*.temp"
+  - "*_scratch.*"
+  - "*_deleteme.*"
+  - "*_old.*"
+  - "*.bak"
+  - "*~"
+
+# Render artifacts
+render_artifacts:
+  - "render_cache/*"
+  - "**/cache/**"
+  - "**/tmp/**"
+  - "**/temp/**"
+  - "**/*.blend?"
+  - "**/*.blend??"
+  - "**/_autosave*"
+
+# Log files
+log_files:
+  - "**/logs/*.log"
+  - "**/*.log"
+  - "**/render_log_*.txt"
+  - "**/debug/*.txt"
+
+# Intermediates
+intermediates:
+  - "**/comp/v*/"
+  - "**/v*_[0-9][0-9][0-9]/"
+  - "**/working/*"
+  - "**/dailies/*"
+  - "**/review/*"
+
+# Specific application patterns
+application_patterns:
+  # Blender
+  blender:
+    - "**/*.blend1"
+    - "**/*.blend2"
+    - "**/*.blend~"
+  
+  # Maya
+  maya:
+    - "**/incrementalSave/**"
+    - "**/*.ma~"
+    - "**/*.mb~"
+  
+  # Nuke
+  nuke:
+    - "**/*.nk~"
+    - "**/*.nk.autosave"
+  
+  # Houdini
+  houdini:
+    - "**/*.hip~"
+    - "**/*.hipnc~"
+    - "**/backup/**"
+  
+  # After Effects
+  after_effects:
+    - "**/Adobe After Effects Auto-Save/**"
+    - "**/*_AME/**"

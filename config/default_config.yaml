@@ -1,0 +1,51 @@
+# Default configuration for PostRenderCleaner
+
+cleanup:
+  temp_patterns:
+    - "*.tmp"
+    - "*.temp"
+    - "*_scratch.*"
+    - "render_cache/*"
+    - "**/temp/**"
+    - "**/*_temp*"
+    - "**/logs/*.log"
+  
+  retention:
+    logs: 30  # days
+    intermediates: 7  # days
+    backups: 90  # days
+  
+  actions:
+    compress_renders: true
+    archive_to_cold_storage: true
+    generate_report: true
+  
+  notification:
+    email_on_completion: true
+    slack_on_error: true
+    send_report_to_project_owner: true
+
+storage:
+  archive_directory: "/archive"
+  log_directory: "/logs"
+  temp_directory: "/tmp"
+  
+  cloud:
+    gcs_bucket: "post-render-archives"
+    storage_class: "COLDLINE"
+    region: "us-central1"
+
+integration:
+  drive:
+    enabled: true
+    root_folder_id: "root_folder_id_here"
+  
+  renderfarm:
+    enabled: true
+    api_url: "https://renderfarm.example.com/api"
+    poll_interval: 300  # seconds
+
+security:
+  secure_delete: true
+  audit_logging: true
+  retention_override_requires_approval: true
